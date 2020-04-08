@@ -16,6 +16,25 @@ fn sum_of_naturals_div_by_3_and_5() {
     println!("Sum is {}", sum);
 }
 
+fn greatest_common_divisor() {
+    println!("This function will calculate greatest common divisor of two given numbers");
+    let mut input_buffer = String::new();
+    io::stdin().read_line(&mut input_buffer).expect("Failed to read input line");
+    let mut buff_iter = input_buffer.split_whitespace();
+    let mut a = buff_iter.next().unwrap().parse::<u64>().unwrap();
+    let mut b = buff_iter.next().unwrap().parse::<u64>().unwrap();
+
+    let mut r: u64;
+    while (a % b > 0) {
+        r = a % b;
+        a = b;
+        b = r;
+    }
+
+    println!("GCD is {}", b);
+}
+
 fn main() {
-    sum_of_naturals_div_by_3_and_5();
+    //sum_of_naturals_div_by_3_and_5();
+    greatest_common_divisor()
 }
