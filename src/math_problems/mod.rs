@@ -14,9 +14,10 @@ pub fn sum_of_naturals_div_by_3_and_5() {
     println!("Sum is {}", sum);
 }
 
-pub fn greatest_common_divisor() {
+pub fn greatest_common_divisor() -> Result<u64, std::io::Error>{
+    println!("Input 2 natural numbers to calculate GCD:");
     let mut input_buffer = String::new();
-    io::stdin().read_line(&mut input_buffer).expect("Failed to read input line");
+    io::stdin().read_line(&mut input_buffer)?;
     let mut buff_iter = input_buffer.split_whitespace();
     let mut a = buff_iter.next().unwrap().parse::<u64>().unwrap();
     let mut b = buff_iter.next().unwrap().parse::<u64>().unwrap();
@@ -27,6 +28,5 @@ pub fn greatest_common_divisor() {
         a = b;
         b = r;
     }
-
-    println!("GCD is {}", b);
+    Ok(b)
 }
