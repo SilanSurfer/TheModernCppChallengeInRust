@@ -1,6 +1,6 @@
 type FunResult = Result<u64, &'static str>;
 
-pub fn sum_of_naturals_div_by_3_and_5(input_vec: &Vec<u64>) -> FunResult  {
+pub fn sum_of_naturals_div_by_3_and_5(input_vec: &Vec<u64>) -> FunResult {
     if input_vec.len() < 1 {
         eprintln!("Expected 1 input, received {}", input_vec.len());
         return Err("Not enough inputs provided");
