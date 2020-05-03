@@ -1,26 +1,28 @@
-use std::io;
+type FunResult = Result<u64, &'static str>;
 
-pub fn sum_of_naturals_div_by_3_and_5() {
-    let mut input_buffer = String::new();
-    io::stdin().read_line(&mut input_buffer).expect("Failed to read input line");
-    let upper_limit = input_buffer.trim().parse::<u64>().unwrap();
+pub fn sum_of_naturals_div_by_3_and_5(input_vec: &Vec<u64>) -> FunResult  {
+    if input_vec.len() < 1 {
+        eprintln!("Expected 1 input, received {}", input_vec.len());
+        return Err("Not enough inputs provided");
+    }
 
+    let upper_limit = input_vec[0];
     let mut sum = 0;
     for no in 1..upper_limit {
         if no % 3 == 0 && no % 5 == 0 {
             sum += no;
         }
     }
-    println!("Sum is {}", sum);
+    Ok(sum)
 }
 
-pub fn greatest_common_divisor() -> Result<u64, std::io::Error>{
-    println!("Input 2 natural numbers to calculate GCD:");
-    let mut input_buffer = String::new();
-    io::stdin().read_line(&mut input_buffer)?;
-    let mut buff_iter = input_buffer.split_whitespace();
-    let mut a = buff_iter.next().unwrap().parse::<u64>().unwrap();
-    let mut b = buff_iter.next().unwrap().parse::<u64>().unwrap();
+pub fn greatest_common_divisor(input_vec: &Vec<u64>) -> FunResult {
+    if input_vec.len() < 2 {
+        eprintln!("Expected 2 inputs, received {}", input_vec.len());
+        return Err("Not enough inputs provided");
+    }
+    let mut a = input_vec[0];
+    let mut b = input_vec[1];
 
     let mut r: u64;
     while a % b > 0 {
