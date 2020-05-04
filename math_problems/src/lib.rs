@@ -57,4 +57,25 @@ mod test {
         let input_vec = vec![3, 9];
         assert_eq!(Ok(3), greatest_common_divisor(&input_vec));
     }
+
+    #[test]
+    fn test_sum_of_naturals_too_short_input() {
+        let input_vec = vec![];
+        assert_eq!(
+            Err("Not enough inputs provided"),
+            sum_of_naturals_div_by_3_and_5(&input_vec)
+        );
+    }
+
+    #[test]
+    fn test_sum_of_naturals_too_long_input() {
+        let input_vec = vec![16, 100];
+        assert_eq!(Ok(15), sum_of_naturals_div_by_3_and_5(&input_vec));
+    }
+
+    #[test]
+    fn test_sum_of_naturals_ok_input() {
+        let input_vec = vec![31];
+        assert_eq!(Ok(45), sum_of_naturals_div_by_3_and_5(&input_vec));
+    }
 }
