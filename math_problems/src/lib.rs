@@ -32,3 +32,29 @@ pub fn greatest_common_divisor(input_vec: &Vec<u64>) -> FunResult {
     }
     Ok(b)
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn test_gcd_too_short_input() {
+        let input_vec = vec![2];
+        assert_eq!(
+            Err("Not enough inputs provided"),
+            greatest_common_divisor(&input_vec)
+        );
+    }
+
+    #[test]
+    fn test_gcd_too_long_input() {
+        let input_vec = vec![2, 4, 8];
+        assert_eq!(Ok(2), greatest_common_divisor(&input_vec));
+    }
+
+    #[test]
+    fn test_gcd_proper_input() {
+        let input_vec = vec![3, 9];
+        assert_eq!(Ok(3), greatest_common_divisor(&input_vec));
+    }
+}
