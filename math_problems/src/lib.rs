@@ -1,7 +1,7 @@
 type FunResult = Result<u64, &'static str>;
 
-pub fn sum_of_naturals_div_by_3_and_5(input_vec: &Vec<u64>) -> FunResult {
-    if input_vec.len() < 1 {
+pub fn sum_of_naturals_div_by_3_and_5(input_vec: &[u64]) -> FunResult {
+    if input_vec.is_empty() {
         eprintln!("Expected 1 input, received {}", input_vec.len());
         return Err("Not enough inputs provided");
     }
@@ -16,7 +16,7 @@ pub fn sum_of_naturals_div_by_3_and_5(input_vec: &Vec<u64>) -> FunResult {
     Ok(sum)
 }
 
-pub fn greatest_common_divisor(input_vec: &Vec<u64>) -> FunResult {
+pub fn greatest_common_divisor(input_vec: &[u64]) -> FunResult {
     if input_vec.len() < 2 {
         eprintln!("Expected 2 inputs, received {}", input_vec.len());
         return Err("Not enough inputs provided");

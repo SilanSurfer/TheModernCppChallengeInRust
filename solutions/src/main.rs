@@ -1,7 +1,5 @@
 use std::io;
 
-use math_problems;
-
 fn parse_u64_input() -> Result<Vec<u64>, std::io::Error> {
     let mut input_buffer = String::new();
     io::stdin().read_line(&mut input_buffer)?;
